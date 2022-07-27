@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApplication2</name>
+    </assembly>
+    <members>
+        <member name="T:WebApplication2.Controllers.rateController">
+            <summary>
+            Отримання поточного курсу BTC до UAH
+            </summary>
+        </member>
+        <member name="M:WebApplication2.Controllers.rateController.Get">
+            <summary>
+            Отримати поточний курс BTC до UAH
+            </summary>
+            <remarks>Запит має повертати поточний курс BTC до UAH використовуючи будь-який third party сервіс з публічним АРІ</remarks>>
+            <response code="200">Повертається актуальний курс BTC до UAH</response>
+            <response code="400">Invalid status value</response>
+        </member>
+        <member name="T:WebApplication2.Controllers.subscriptionController">
+            <summary>
+            Робота з підпискою
+            </summary>
+        </member>
+        <member name="M:WebApplication2.Controllers.subscriptionController.Subscibe(System.String)">
+             <summary>
+             Підписати емейл на отримання поточного курсу
+             </summary>
+             <remarks>Запит має перевірити, чи немає данної електронної адреси в поточній базі даних (файловій) і, в разі її відсутності, записувати її. Пізніше, за допомогою іншого запиту ми будемо відправляти лист на ті електронні адреси, які будуть в цій базі.</remarks>>
+            <param name = "email">Електронна адреса, яку потрібно підписати</param >
+             <response code="200">E-mail додано</response>
+             <response code="409">Повертати, якщо e-mail вже є в базі даних (файловій)</response>
+        </member>
+        <member name="M:WebApplication2.Controllers.subscriptionController.SendEmails">
+            <summary>
+            Відправити e-mail з поточним курсом на всі підписані електронні пошти.
+            </summary>
+            <remarks>Запит має отримувати актуальний курс BTC до UAH за допомогою third-party сервісу та відправляти його на всі електронні адреси, які були підписані раніше.</remarks>>
+            <response code="200">E-mailʼи відправлено</response>
+        </member>
+        <member name="M:WebApplication2.Services.CourseService.GetBitcoinToUAH">
+            <summary>
+            Gets bitcoin course
+            </summary>
+            <returns>Amount of UAH equivalent to 1 bitcoin</returns>
+        </member>
+    </members>
+</doc>
